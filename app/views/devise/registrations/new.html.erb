@@ -4,6 +4,8 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
+    <%= f.input :username,
+                required: true %>
     <%= f.input :email,
                 required: true,
                 autofocus: true,
@@ -15,6 +17,12 @@
     <%= f.input :password_confirmation,
                 required: true,
                 input_html: { autocomplete: "new-password" } %>
+    <%= f.input :address,
+                required: true
+                 %>
+    <%= f.input :description
+                 %>
+    <%= f.input :pedophile, as: :boolean %>
   </div>
 
   <div class="form-actions">
