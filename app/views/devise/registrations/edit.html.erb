@@ -9,7 +9,9 @@
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
       <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
     <% end %>
-
+    <%= f.input :username, required: false %>
+    <%= f.input :address, required: false %>
+    <%= f.input :description, required: false %>
     <%= f.input :password,
                 hint: "leave it blank if you don't want to change it",
                 required: false,
