@@ -1,0 +1,20 @@
+<%= simple_form_for(baby) do |f| %>
+<%= f.input :first_name %>
+<%= f.input :title %>
+<%= f.input :age, collection: ["0", "1", "2", "3"], include_blank: false %>
+<%= f.input :gender, collection: ["boy", "girl", "other?"], include_blank: false %>
+<%= f.input :description %>
+<%= f.input :price_per_day %>
+<%= f.input :clean, as: :boolean %>
+<%= f.input :sleepy, as: :boolean %>
+<%= f.input :excited, as: :boolean %>
+<%= f.input :crying, as: :boolean %>
+<%= f.input :fat, as: :boolean %>
+<%= f.input :playful, as: :boolean %>
+<%= f.input :funny, as: :boolean %>
+<%= f.input :public, as: :boolean %>
+<%= f.input :animals, as: :boolean %>
+<%= f.input :speaks, as: :boolean %>
+<%= f.submit %>
+
+<% end %>

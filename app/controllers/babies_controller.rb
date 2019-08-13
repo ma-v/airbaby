@@ -1,5 +1,5 @@
 class BabiesController < ApplicationController
-  before_action :set_baby, only: [:show]
+  before_action :set_baby, only: [:show, :edit, :update, :destroy]
 
   def show
   end
@@ -18,6 +18,19 @@ class BabiesController < ApplicationController
     else
       render :new
     end
+  end
+
+  def edit
+  end
+
+  def update
+    @baby.update(babies_params)
+    redirect_to baby_path(@baby)
+  end
+
+  def destroy
+    @baby.destroy
+    redirect_to dashboard_path, notice: "Your baby has successfully been deleted !"
   end
 
   private

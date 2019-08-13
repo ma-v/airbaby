@@ -5,10 +5,10 @@
 		<p><%= @baby.description %></p>
 	</div>
 	<div class="baby-price">
-		<h2><%= @baby.price_per_day %> €</h2> 
+		<h2><%= @baby.price_per_day %> €</h2>
 	</div>
 	<div class="baby-traits">
-		<h2>My baby skills</h2> 
+		<h2>My baby skills</h2>
 		<ul>
 		<% if @baby.clean %>
 			<li>Clean</li>
@@ -41,5 +41,9 @@
 			<li>Speaks</li>
 		<% end %>
 		</ul>
+    <p><%= link_to "Edit my baby", edit_baby_path(@baby) %></p>
+    <p><%= link_to "Delete my baby", baby_path(@baby),
+      method: :delete,
+      data: { confirm: "Are you sure?" } %></p>
 	</div>
 </div>
