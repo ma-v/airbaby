@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row justify-center">
+    <h1>My Babies</h1>
+    <div class="row">
+      <ul>
+        <% current_user.babies.each do |baby| %>
+        <div class="card-product mt-4">
+          <%= image_tag "https://images.pexels.com/photos/47090/baby-tears-small-child-sad-47090.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" %>
+          <div class="card-product-infos">
+            <h2><%= baby.title %></h2>
+            <h3><%= baby.first_name %></h3>
+            <p><%= baby.description %></p>
+            <h3><%= baby.price_per_day %> € / per night</h3>
+          </div>
+          <div class="card-product">
+            <%# link_to "See my baby", baby_path(baby), class: "dropdown-item" %>
+            <%# link_to "Delete", destroy_baby_path(baby), method: :delete, class: "dropdown-item" %>
+          </div>
+        </div>
+        <% end %>
+      </ul>
+    </div>
+
+  </div>
+</div>
