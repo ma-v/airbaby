@@ -12,7 +12,7 @@
     <ul class="navbar-nav mr-auto align-items-center">
       <% if user_signed_in? %>
         <li class="nav-item active">
-          <%= link_to "Publish a baby", "#", class: "nav-link btn button mr-4" %>
+          <%= link_to "Publish a baby", new_baby_path, class: "nav-link btn button mr-4" %>
         </li>
         <li class="nav-item dropdown">
           <%= cl_image_tag current_user.photo, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
