@@ -1,7 +1,7 @@
   <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-    <a class="navbar-brand mr-4" href="#">
+      <%= link_to root_path, class: "navbar-brand mr-4" do  %>
       <%= image_tag("logo.png") %>
-    </a>
+      <% end %>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -16,7 +16,8 @@
           <img class="avatar dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://kitt.lewagon.com/placeholder/users/ssaunier" />
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="#">Your babies</a>
-            <a class="dropdown-item" href="#">Log Out</a>
+            <a class="dropdown-item" href="#">
+              <%= link_to "Log Out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           </div>
         </li>
       </ul>
