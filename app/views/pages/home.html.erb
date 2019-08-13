@@ -1,14 +1,17 @@
 <div class="container">
 	<% @babies.each do |baby| %>
-  <div class="card-product mt-4">
-		<img src="https://i.kym-cdn.com/entries/icons/original/000/014/285/sideeyechloe.jpg" />
-		<div class="card-product-infos">
-			<h2><%= baby.first_name %></h2>
+<%= link_to(baby_path(baby)) do %>
+<div class="card-product mt-4">
+    <img src="https://i.kym-cdn.com/entries/icons/original/000/014/285/sideeyechloe.jpg" />
+    <div class="card-product-infos">
+      <h2><%= baby.first_name %></h2>
       <h3><%= baby.title %></h3>
       <p><%= baby.description %></p>
       <h6>Price per day: <%= baby.price_per_day %>€</h6>
       <p>Gender: <%= baby.gender %></p>
-		</div>
-	</div>
+    </div>
+  </div>
   <% end %>
+<% end %>
 </div>
+

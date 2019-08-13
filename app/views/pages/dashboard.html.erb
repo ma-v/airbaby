@@ -4,6 +4,7 @@
     <div class="row">
       <ul>
         <% current_user.babies.each do |baby| %>
+        <%= link_to(baby_path(baby)) do %>
         <div class="card-product mt-4">
           <%= image_tag "https://images.pexels.com/photos/47090/baby-tears-small-child-sad-47090.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" %>
           <div class="card-product-infos">
@@ -17,8 +18,10 @@
             <%# link_to "Delete", destroy_baby_path(baby), method: :delete, class: "dropdown-item" %>
           <!-- </div> -->
         </div>
+          <% end %>
         <% end %>
       </ul>
+
     </div>
 
   </div>
