@@ -1,4 +1,8 @@
 <div class="container">
+	
+	<div class="baby-img">
+		<%= cl_image_tag @baby.photo, height: 250, width: 250, crop: :fill %>
+	</div>
 	<div class="baby-info">
 		<h1><%= @baby.first_name %> - <%= @baby.title %></h1>
 		<h2><%= @baby.age %> years old</h2>
