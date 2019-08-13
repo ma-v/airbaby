@@ -11,7 +11,7 @@ class BabiesController < ApplicationController
     if @baby.save
       redirect_to root_path
     else
-      redirect_to render: :new
+      render :new
     end
   end
 
