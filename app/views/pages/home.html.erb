@@ -1,5 +1,6 @@
 <div class="container">
 	<% @babies.each do |baby| %>
+<%= link_to(baby_path(baby)) do %>
   <div class="card-product mt-4">
 		<%= cl_image_tag baby.photo, height: 180, width: 180, crop: :fill %>
 		<div class="card-product-infos">
@@ -8,7 +9,9 @@
       <p><%= baby.description %></p>
       <h6>Price per day: <%= baby.price_per_day %>€</h6>
       <p>Gender: <%= baby.gender %></p>
-		</div>
-	</div>
+    </div>
+  </div>
   <% end %>
+<% end %>
 </div>
+
