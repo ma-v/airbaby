@@ -5,4 +5,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   mount_uploader :photo, PhotoUploader
   validates :photo, presence: true
+  has_many :babies, dependent: :destroy
 end
