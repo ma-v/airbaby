@@ -1,4 +1,9 @@
 class BabiesController < ApplicationController
+  before_action :set_baby, only: [:show]
+
+  def show
+  end
+
   def new
     @baby = Baby.new
     authorize @baby
@@ -13,6 +18,13 @@ class BabiesController < ApplicationController
     else
       render :new
     end
+  end
+
+  private
+
+  def set_baby
+    @baby = Baby.find(params[:id])
+    authorize @baby
   end
 
   def babies_params
