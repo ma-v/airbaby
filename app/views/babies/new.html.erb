@@ -2,7 +2,7 @@
 <%= f.input :first_name %>
 <%= f.input :title %>
 <%= f.input :age %>
-<%= f.input :gender %>
+<%= f.input :gender, collection: ["boy", "girl", "other?"], include_blank: false %>
 <%= f.input :description %>
 <%= f.input :price_per_day %>
 <%= f.input :clean, as: :boolean %>
