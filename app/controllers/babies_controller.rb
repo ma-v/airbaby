@@ -1,5 +1,5 @@
 class BabiesController < ApplicationController
-  before_action :set_baby, only: [:show]
+  before_action :set_baby, only: [:show, :edit, :update, :destroy]
 
   def show
   end
@@ -20,6 +20,19 @@ class BabiesController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    @baby.update(babies_params)
+    redirect_to baby_path(@baby)
+  end
+
+  def destroy
+    @baby.destroy
+    redirect_to dashboard_path, notice: "Your baby has successfully been deleted !"
+  end
+
   private
 
   def set_baby
@@ -28,6 +41,6 @@ class BabiesController < ApplicationController
   end
 
   def babies_params
-    params.require(:baby).permit(:first_name, :photo, :age, :gender, :description, :price_per_day, :clean, :sleepy, :excited, :crying, :fat, :playful, :funny, :public, :animals, :speaks, :title)
+    params.require(:baby).permit(:first_name, :photo, :age, :gender, :description, :price_per_day, :clean, :sleepy, :excited, :crying, :fat, :playful, :funny, :public, :animals, :speaks, :title, :photo)
   end
 end

@@ -1,10 +1,10 @@
 <div class="container">
 	<% @babies.each do |baby| %>
 <%= link_to(baby_path(baby)) do %>
-<div class="card-product mt-4">
-    <img src="https://i.kym-cdn.com/entries/icons/original/000/014/285/sideeyechloe.jpg" />
-    <div class="card-product-infos">
-      <h2><%= baby.first_name %></h2>
+  <div class="card-product mt-4">
+		<%= cl_image_tag baby.photo, height: 180, width: 180, crop: :fill %>
+		<div class="card-product-infos">
+			<h2><%= baby.first_name %></h2>
       <h3><%= baby.title %></h3>
       <p><%= baby.description %></p>
       <h6>Price per day: <%= baby.price_per_day %>€</h6>
