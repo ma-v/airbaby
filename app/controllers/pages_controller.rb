@@ -4,4 +4,7 @@ class PagesController < ApplicationController
   def home
     @babies = policy_scope(Baby)
   end
+
+  def dashboard
+  end
 end
