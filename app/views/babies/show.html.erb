@@ -1,0 +1,45 @@
+<div class="container">
+	<div class="baby-info">
+		<h1><%= @baby.first_name %> - <%= @baby.title %></h1>
+		<h2><%= @baby.age %> years old</h2>
+		<p><%= @baby.description %></p>
+	</div>
+	<div class="baby-price">
+		<h2><%= @baby.price_per_day %> €</h2> 
+	</div>
+	<div class="baby-traits">
+		<h2>My baby skills</h2> 
+		<ul>
+		<% if @baby.clean %>
+			<li>Clean</li>
+		<% end %>
+		<% if @baby.sleepy %>
+			<li>Sleepy</li>
+		<% end %>
+		<% if @baby.excited %>
+			<li>Excited</li>
+		<% end %>
+		<% if @baby.crying %>
+			<li>Cries a lot</li>
+		<% end %>
+		<% if @baby.fat %>
+			<li>Fat</li>
+		<% end %>
+		<% if @baby.playful %>
+			<li>Playful</li>
+		<% end %>
+		<% if @baby.funny %>
+			<li>Funny</li>
+		<% end %>
+		<% if @baby.public %>
+			<li>At ease in public</li>
+		<% end %>
+		<% if @baby.animals %>
+			<li>At ease with animals</li>
+		<% end %>
+		<% if @baby.speaks %>
+			<li>Speaks</li>
+		<% end %>
+		</ul>
+	</div>
+</div>
