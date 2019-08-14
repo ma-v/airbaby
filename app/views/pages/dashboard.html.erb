@@ -12,13 +12,14 @@
             <h3><%= baby.first_name %></h3>
             <p><%= baby.description %></p>
             <h3><%= baby.price_per_day %> € / per night</h3>
+            <p> <%= link_to "See my baby", baby_path(baby) %>
+            <%= link_to "Edit my baby", edit_baby_path(baby) %>
+            <%= link_to "Delete my baby", baby_path(baby),
+            method: :delete,
+            data: { confirm: "Are you sure?" } %></p>
           </div>
-          <!-- <div class="card-product"> -->
-            <%# link_to "See my baby", baby_path(baby), class: "dropdown-item" %>
-            <%# link_to "Delete", destroy_baby_path(baby), method: :delete, class: "dropdown-item" %>
-          <!-- </div> -->
         </div>
-          <% end %>
+        <% end %>
         <% end %>
       </ul>
 
