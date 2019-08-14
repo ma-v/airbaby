@@ -1,6 +1,6 @@
 <div class="container">
+  <h1>My Babies</h1>
   <div class="row justify-center">
-    <h1>My Babies</h1>
     <div class="row">
       <ul>
         <% current_user.babies.each do |baby| %>
@@ -16,13 +16,13 @@
           <!-- <div class="card-product"> -->
             <%# link_to "See my baby", baby_path(baby), class: "dropdown-item" %>
             <%# link_to "Delete", destroy_baby_path(baby), method: :delete, class: "dropdown-item" %>
-          <!-- </div> -->
-        </div>
+            <!-- </div> -->
+          </div>
           <% end %>
-        <% end %>
-      </ul>
+          <% end %>
+        </ul>
+
+      </div>
 
     </div>
-
   </div>
-</div>
