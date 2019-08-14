@@ -24,4 +24,24 @@
       </ul>
       </div>
     </div>
+
+    <h1>My booked babies</h1>
+    <div class="row justify-center">
+    <div class="row">
+      <ul>
+        <% current_user.bookings.each do |booking| %>
+        <%= link_to(baby_path(booking.baby)) do %>
+        <div class="card-product mt-4">
+          <%= cl_image_tag booking.baby.photo, height: 180, width: 180, crop: :fill %>
+          <div class="card-product-infos">
+            <h2><%= booking.baby.title %></h2>
+            <h3><%= booking.baby.first_name %></h3>
+            <p><%= booking.baby.description %></p>
+          </div>
+        </div>
+        <% end %>
+        <% end %>
+      </ul>
+      </div>
+    </div>
   </div>
