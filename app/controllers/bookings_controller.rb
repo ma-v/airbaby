@@ -7,7 +7,12 @@ class BookingsController < ApplicationController
   	@booking.baby = @baby
   	@booking.price = 50
   	@booking.save
-  	redirect_to dashboard_path
+
+  	if @booking.save
+      redirect_to dashboard_path
+    else
+      render 'babies/show'
+    end
   end
 
   private
