@@ -32,5 +32,4 @@ class BabyPolicy < ApplicationPolicy
   def destroy?
     update?
   end
-
 end
