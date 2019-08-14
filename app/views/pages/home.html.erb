@@ -1,17 +1,28 @@
+
+<% unless user_signed_in? %>
+  <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0)), url(https://images.unsplash.com/photo-1492725764893-90b379c2b6e7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80);">
+  <div class="banner-text">
+    <h1>AirBaby</h1>
+    <h2> <strong>the first marketplace</strong> to <strong>rent babies</strong>!</h2>
+    <p>Giving baby love to baby lovers</p>
+    <%= link_to "Sign-up", new_user_registration_path, class:"btn button"%>
+  </div>
+  </div>
+<% end %>
 <div class="container">
 	<% @babies.each do |baby| %>
-<%= link_to(baby_path(baby)) do %>
+  <%= link_to(baby_path(baby)) do %>
   <div class="card-product mt-4">
-		<%= cl_image_tag baby.photo, height: 180, width: 180, crop: :fill %>
-		<div class="card-product-infos">
-			<h2><%= baby.first_name %></h2>
-      <h3><%= baby.title %></h3>
-      <p><%= baby.description %></p>
-      <h6>Price per day: <%= baby.price_per_day %>€</h6>
-      <p>Gender: <%= baby.gender %></p>
-    </div>
-  </div>
-  <% end %>
-<% end %>
+    <%= cl_image_tag baby.photo, height: 180, width: 180, crop: :fill %>
+    <div class="card-product-infos">
+     <h2><%= baby.first_name %></h2>
+     <h3><%= baby.title %></h3>
+     <p><%= baby.description %></p>
+     <h6>Price per day: <%= baby.price_per_day %>€</h6>
+     <p>Gender: <%= baby.gender %></p>
+   </div>
+ </div>
+ <% end %>
+ <% end %>
 </div>
 
