@@ -4,14 +4,6 @@ class BookingPolicy < ApplicationPolicy
       scope.all
     end
 
-    def index?
-      true
-    end
-
-    def show?
-      true
-    end
-
     def create?
       true
     end
@@ -31,5 +23,4 @@ class BookingPolicy < ApplicationPolicy
     def destroy?
       update?
     end
-  end
 end
