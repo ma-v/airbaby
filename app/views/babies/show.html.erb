@@ -69,7 +69,7 @@
           </div>
 
           <form>
-            <input type="number" value="<%= @baby.price_per_day * 100 %>" disabled class="form-control" id="price-input" name="price-cents">
+            <input type="hidden" value="<%= @baby.price_per_day * 100 %>" disabled class="form-control" id="price-input" name="price-cents">
             <input type="submit" value="Pay <%= @baby.price_per_day %> €" class="btn btn-primary" id="submit">
             <div class="test btn btn-primary">Test</div>
           </form>
