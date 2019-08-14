@@ -14,40 +14,64 @@
 	<div class="baby-traits">
 		<h2>My baby skills</h2>
 		<ul>
-		<% if @baby.clean %>
+			<% if @baby.clean %>
 			<li>Clean</li>
-		<% end %>
-		<% if @baby.sleepy %>
+			<% end %>
+			<% if @baby.sleepy %>
 			<li>Sleepy</li>
-		<% end %>
-		<% if @baby.excited %>
+			<% end %>
+			<% if @baby.excited %>
 			<li>Excited</li>
-		<% end %>
-		<% if @baby.crying %>
+			<% end %>
+			<% if @baby.crying %>
 			<li>Cries a lot</li>
-		<% end %>
-		<% if @baby.fat %>
+			<% end %>
+			<% if @baby.fat %>
 			<li>Fat</li>
-		<% end %>
-		<% if @baby.playful %>
+			<% end %>
+			<% if @baby.playful %>
 			<li>Playful</li>
-		<% end %>
-		<% if @baby.funny %>
+			<% end %>
+			<% if @baby.funny %>
 			<li>Funny</li>
-		<% end %>
-		<% if @baby.public %>
+			<% end %>
+			<% if @baby.public %>
 			<li>At ease in public</li>
-		<% end %>
-		<% if @baby.animals %>
+			<% end %>
+			<% if @baby.animals %>
 			<li>At ease with animals</li>
-		<% end %>
-		<% if @baby.speaks %>
+			<% end %>
+			<% if @baby.speaks %>
 			<li>Speaks</li>
-		<% end %>
+			<% end %>
 		</ul>
-    <p><%= link_to "Edit my baby", edit_baby_path(@baby) %></p>
-    <p><%= link_to "Delete my baby", baby_path(@baby),
-      method: :delete,
-      data: { confirm: "Are you sure?" } %></p>
+		<p><%= link_to "Edit my baby", edit_baby_path(@baby) %></p>
+		<p><%= link_to "Delete my baby", baby_path(@baby),
+			method: :delete,
+		data: { confirm: "Are you sure?" } %></p>
 	</div>
+
+	<div class="form-container fixed-bottom">
+          <div class="header">
+            <div class="header-row">
+              <div class="big-bold" id="price" data-amount-cents="<%= @baby.price_per_day * 100 %>"><%= @baby.price_per_day %>€</div>
+              <div class="small-light"> / Day</div>
+            </div>
+          </div>
+
+          <div class="flex-between">
+            Participants:
+            <div class="actions">
+              <a class="btn round-bordered incrementer minus" data-offset="-1">-</a>
+              <span id="counter" data-count="1">1</span>
+              <a href="#" class="btn round-bordered incrementer" data-offset="1">+</a>
+            </div>
+          </div>
+
+          <form>
+            <input type="number" value="<%= @baby.price_per_day * 100 %>" disabled class="form-control" id="price-input" name="price-cents">
+            <input type="submit" value="Pay <%= @baby.price_per_day %> €" class="btn btn-primary" id="submit">
+            <div class="test btn btn-primary">Test</div>
+          </form>
+        </div>
 </div>
