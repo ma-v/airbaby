@@ -3,32 +3,33 @@ class BabyPolicy < ApplicationPolicy
     def resolve
       scope.all
     end
+  end
 
-    def index?
-      true
-    end
+  def index?
+    true
+  end
 
-    def show?
-      true
-    end
+  def show?
+    true
+  end
 
-    def create?
-      true
-    end
+  def create?
+    true
+  end
 
-    def new?
-      create?
-    end
+  def new?
+    create?
+  end
 
-    def update?
-      record.user == user
-    end
+  def update?
+    record.user == user
+  end
 
-    def edit?
-      update?
-    end
+  def edit?
+    update?
+  end
 
-    def destroy?
-      update?
-    end
+  def destroy?
+    update?
+  end
 end

@@ -1,5 +1,5 @@
 <div class="container">
-	
+
 	<div class="baby-img">
 		<%= cl_image_tag @baby.photo, height: 250, width: 250, crop: :fill %>
 	</div>
@@ -14,42 +14,49 @@
 	<div class="baby-traits">
 		<h2>My baby skills</h2>
 		<ul>
-			<% if @baby.clean %>
-			<li>Clean</li>
-			<% end %>
-			<% if @baby.sleepy %>
-			<li>Sleepy</li>
-			<% end %>
-			<% if @baby.excited %>
-			<li>Excited</li>
-			<% end %>
-			<% if @baby.crying %>
-			<li>Cries a lot</li>
-			<% end %>
-			<% if @baby.fat %>
-			<li>Fat</li>
-			<% end %>
-			<% if @baby.playful %>
-			<li>Playful</li>
-			<% end %>
-			<% if @baby.funny %>
-			<li>Funny</li>
-			<% end %>
-			<% if @baby.public %>
-			<li>At ease in public</li>
-			<% end %>
-			<% if @baby.animals %>
-			<li>At ease with animals</li>
-			<% end %>
-			<% if @baby.speaks %>
-			<li>Speaks</li>
-			<% end %>
-		</ul>
-		<p><%= link_to "Edit my baby", edit_baby_path(@baby) %></p>
-		<p><%= link_to "Delete my baby", baby_path(@baby),
-			method: :delete,
-		data: { confirm: "Are you sure?" } %></p>
-	</div>
+      <% if @baby.clean %>
+      <li>Clean</li>
+      <% end %>
+      <% if @baby.sleepy %>
+      <li>Sleepy</li>
+      <% end %>
+      <% if @baby.excited %>
+      <li>Excited</li>
+      <% end %>
+      <% if @baby.crying %>
+      <li>Cries a lot</li>
+      <% end %>
+      <% if @baby.fat %>
+      <li>Fat</li>
+      <% end %>
+      <% if @baby.playful %>
+      <li>Playful</li>
+      <% end %>
+      <% if @baby.funny %>
+      <li>Funny</li>
+      <% end %>
+      <% if @baby.public %>
+      <li>At ease in public</li>
+      <% end %>
+      <% if @baby.animals %>
+      <li>At ease with animals</li>
+      <% end %>
+      <% if @baby.speaks %>
+      <li>Speaks</li>
+      <% end %>
+    </ul>
+    <p><% if policy(@baby).edit? %>
+      <%= link_to "Edit my baby", edit_baby_path(@baby) %>
+      <% end %>
+    </p>
+    <p><% if policy(@baby).destroy? %>
+      <%= link_to "Delete my baby", baby_path(@baby),
+    method: :delete,
+    data: { confirm: "Are you sure?" } %>
+      <% end %>
+    </p>
+  </div>
+</div>
 
 	<div class="form-container fixed-bottom">
           <div class="header">
