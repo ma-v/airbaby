@@ -8,10 +8,10 @@
         <div class="card-product mt-4">
           <%= cl_image_tag baby.photo, height: 180, width: 180, crop: :fill %>
           <div class="card-product-infos">
-            <h2><%= baby.title %></h2>
             <h3><%= baby.first_name %></h3>
+            <h2><%= baby.title %></h2>
             <p><%= baby.description %></p>
-            <h3><%= baby.price_per_day %> € / per night</h3>
+            <h3><%= baby.price_per_day %> € / per day</h3>
             <p> <%= link_to "See my baby", baby_path(baby) %>
             <%= link_to "Edit my baby", edit_baby_path(baby) %>
             <%= link_to "Delete my baby", baby_path(baby),
