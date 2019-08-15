@@ -14,7 +14,7 @@
 		<div class="row col-6">
 			<% @babies.each do |baby| %>
 			<%= link_to(baby_path(baby)) do %>
-			<div class="card-product mt-2">
+			<div class="card-product mt-2" data-center="<%= [baby.user.longitude, baby.user.latitude] %>">
 				<%= cl_image_tag baby.photo, height: 180, width: 180, crop: :fill %>
 				<div class="card-product-infos">
 					<h2><%= baby.first_name %></h2>
@@ -38,4 +38,3 @@
   </div>
 	</div>
 </div>
-
