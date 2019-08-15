@@ -6,7 +6,7 @@ class BookingsController < ApplicationController
   	@booking.user = current_user
   	@booking.baby = @baby
   	@booking.price = @baby.price_per_day * (((@booking.end_date - @booking.start_date) / 86_400) + 1)
-  	@booking.save
+
   	if @booking.save
       redirect_to dashboard_path
     else
