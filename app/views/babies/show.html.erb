@@ -68,8 +68,9 @@
 
           <%= simple_form_for([@baby, @booking]) do |f| %>
           	<%= f.input :start_date, as: :date, html5: true %>
-          	<%= f.input :end_date, as: :date, html5: true %>
-          	<%= f.submit "Book your baby" %>
+          	<%= f.input :end_date, as: :date, disabled: true, html5: true %>
+            <%= f.input :price, disabled: true, :as => :hidden, input_html: {value: @baby.price_per_day} %>
+          	<%= f.submit "Book for #{@baby.price_per_day}€", id: "submit", class: "btn button" %>
           <% end %>
         </div>
 	</div>

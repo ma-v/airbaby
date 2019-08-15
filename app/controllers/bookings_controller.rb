@@ -1,13 +1,11 @@
 class BookingsController < ApplicationController
   def create
-    @booking = Booking.new(bookings_params)
-    authorize @booking
-
-    @baby = Baby.find(params[:baby_id])
-    @booking.user = current_user
-    @booking.baby = @baby
-    @booking.price = 50
-    @booking.save
+  	@booking = Booking.new(bookings_params)
+  	authorize @booking
+  	@baby = Baby.find(params[:baby_id])
+  	@booking.user = current_user
+  	@booking.baby = @baby
+  	@booking.price = @baby.price_per_day * (((@booking.end_date - @booking.start_date) / 86_400) + 1)
 
   	if @booking.save
       redirect_to dashboard_path

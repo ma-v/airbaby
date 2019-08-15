@@ -37,6 +37,7 @@
             <h2><%= booking.baby.title %></h2>
             <h3><%= booking.baby.first_name %></h3>
             <p><%= booking.baby.description %></p>
+            <h4>Total Cost : <%= booking.price %>€</h4>
             <p><%= link_to "Delete my booking", booking_path(booking),
             method: :delete,
             data: { confirm: "Are you sure?" } %></p>
