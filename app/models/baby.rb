@@ -10,6 +10,15 @@ class Baby < ApplicationRecord
   validates :price_per_day, presence: { message: "Enter a number, don't be greedy but don't be cheap either, you are renting your baby ffs" }
   validates :photo, presence: { message: "Please put a pic of your cutie baby" }
   validates_numericality_of :price_per_day
+  include PgSearch
+  pg_search_scope :global_search,
+    against: [ :description, :title],
+    associated_against: {
+      user: [ :address]
+    },
+    using: {
+      tsearch: { prefix: true }
+    }
 
   def self.geocoded
     select { |baby| baby.user.geocoded? }
