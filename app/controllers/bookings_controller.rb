@@ -5,7 +5,7 @@ class BookingsController < ApplicationController
   	@baby = Baby.find(params[:baby_id])
   	@booking.user = current_user
   	@booking.baby = @baby
-  	@booking.price = 50
+  	@booking.price = @baby.price_per_day * (((@booking.end_date - @booking.start_date) / 86_400) + 1)
   	@booking.save
 
   	if @booking.save
