@@ -14,4 +14,8 @@ class Baby < ApplicationRecord
   def self.geocoded
     select { |baby| baby.user.geocoded? }
   end
+
+  def available?(from_date, to_date)
+    bookings.where(start_date: from_date..to_date).or(bookings.where(end_date: from_date..to_date)).blank?
+  end
 end
