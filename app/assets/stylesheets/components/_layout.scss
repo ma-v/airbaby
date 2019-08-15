@@ -1,3 +1,8 @@
-body {
-  margin-bottom: 64px;
+// body {
+//   margin-bottom: 64px;
+// }
+
+
+.page {
+  min-height: calc(100vh - 64px)
 }

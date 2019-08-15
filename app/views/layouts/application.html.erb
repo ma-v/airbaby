@@ -10,11 +10,11 @@
   <%= stylesheet_pack_tag 'application', media: 'all' %>
 </head>
 <body>
-  <%= render 'shared/navbar' %>
-  <%= render 'shared/flashes' %>
-  <%= yield %>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
+  <div class="page">
+    <%= render 'shared/navbar' %>
+    <%= render 'shared/flashes' %>
+    <%= yield %>
+  </div>
   <%= render 'shared/footer' %>
   <%= javascript_include_tag 'application' %>
   <%= javascript_pack_tag 'application' %>
