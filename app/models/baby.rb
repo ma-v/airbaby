@@ -15,7 +15,7 @@ class Baby < ApplicationRecord
     select { |baby| baby.user.geocoded? }
   end
 
-  def available?(date)
-    bookings.where('start_date <= :date AND end_date >= :date', date: date).blank?
+  def available?(from_date, to_date)
+    bookings.where(start_date: from_date..to_date).or(bookings.where(end_date: from_date..to_date)).blank?
   end
 end
