@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   resources :babies, only: [:show, :new, :create, :edit, :update, :destroy] do
   	resources :bookings, only: [:new, :create]
   end
+  resources :bookings, only: [:destroy]
 end
