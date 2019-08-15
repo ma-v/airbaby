@@ -1,10 +1,9 @@
 <div class="container">
   <h1>My Babies</h1>
   <div class="row justify-center">
-    <div class="row">
-      <ul>
+    <div class="row col-7">
+      <ul class="dashboard-container">
         <% current_user.babies.each do |baby| %>
-        <%= link_to(baby_path(baby)) do %>
         <div class="card-product mt-4">
           <%= cl_image_tag baby.photo, height: 180, width: 180, crop: :fill %>
           <div class="card-product-infos">
@@ -12,40 +11,96 @@
             <h2><%= baby.title %></h2>
             <p><%= baby.description %></p>
             <h3><%= baby.price_per_day %> € / per day</h3>
-            <p> <%= link_to "See my baby", baby_path(baby) %>
-            <%= link_to "Edit my baby", edit_baby_path(baby) %>
-            <%= link_to "Delete my baby", baby_path(baby),
-            method: :delete,
-            data: { confirm: "Are you sure?" } %></p>
+            <div class="d-flex">
+              <%= button_to "See my baby", baby_path(baby), :class => "btn button mr-2", :method => :get %>
+              <%= button_to "Edit my baby", edit_baby_path(baby), :class => "btn button mr-2", :method => :get %>
+              <%= button_to "Delete my baby", baby_path(baby),
+              :class => "btn button mr-2",
+              method: :delete,
+              data: { confirm: "Are you sure?" } %>
+              </div>
+            </div>
+          <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#baby<%= baby.id %>" aria-expanded="false" aria-controls="collapseExample">
+            Voir ses bookings
+            <br><i class="far fa-arrow-alt-circle-right"></i>
+          </button>
           </div>
-        </div>
-        <% end %>
-        <% end %>
-      </ul>
+          <% end %>
+        </ul>
       </div>
-    </div>
+      <div class="row col-5">
+        <% current_user.babies.each do |baby| %>
+          <div class="collapse ml-2" id="baby<%= baby.id %>">
 
-    <h1>My booked babies</h1>
-    <div class="row justify-center">
-    <div class="row">
-      <ul>
-        <% current_user.bookings.each do |booking| %>
-        <%= link_to(baby_path(booking.baby)) do %>
-        <div class="card-product mt-4">
-          <%= cl_image_tag booking.baby.photo, height: 180, width: 180, crop: :fill %>
-          <div class="card-product-infos">
-            <h2><%= booking.baby.title %></h2>
-            <h3><%= booking.baby.first_name %></h3>
-            <p><%= booking.baby.description %></p>
-            <h4>Total Cost : <%= booking.price %>€</h4>
-            <p><%= link_to "Delete my booking", booking_path(booking),
-            method: :delete,
-            data: { confirm: "Are you sure?" } %></p>
+          <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= baby.photo %>)">
+            <%= baby.first_name %>'s Reservations
           </div>
-        </div>
+
+          <div class="notification" id="details-<%=  baby.id %>" >
+            <h2 class="notification-content">Total Booking : <%= baby.bookings.length %> |
+            <% price = [] %>
+            <% baby.bookings.each do |booking| %>
+            <% price << booking.price %>
+            <% end %>
+            <strong><%= price.inject(0){|sum,x| sum + x } %> € </strong></h2>
+          </div>
+
+          <% baby.bookings.each do |booking| %>
+          <div class="notification">
+            <img src='<%= User.find(booking.user_id).photo %>' class="avatar-large" />
+            <div class="notification-content">
+              <p>Rented by : <%= User.find(booking.user_id).username %></p>
+              <p><small>From : <%= booking.start_date.to_date %></small>
+                <i class="fas fa-long-arrow-alt-right"></i>
+                <small>To : <%= booking.end_date.to_date %></small></p>
+                <p>Duration : <strong><%= (((booking.end_date - booking.start_date)/86400) + 1).to_i %> days</strong> | Total price :<%= booking.price %> €</p>
+              </div>
+            </div>
+              <% end %>
+
+          </div>
         <% end %>
-        <% end %>
-      </ul>
+
       </div>
-    </div>
+
   </div>
+
+
+
+      <h1>My booked babies</h1>
+      <div class="row justify-center">
+        <div class="row">
+          <ul>
+            <% current_user.bookings.each do |booking| %>
+            <%= link_to(baby_path(booking.baby)) do %>
+            <div class="card-product mt-4">
+              <%= cl_image_tag booking.baby.photo, height: 180, width: 180, crop: :fill %>
+              <div class="card-product-infos">
+                <h2><%= booking.baby.title %></h2>
+                <h3><%= booking.baby.first_name %></h3>
+                <p><%= booking.baby.description %></p>
+                <h4>Total Cost : <%= booking.price %>€</h4>
+                <p><%= link_to "Delete my booking", booking_path(booking),
+                method: :delete,
+                data: { confirm: "Are you sure?" } %></p>
+              </div>
+            </div>
+            <% end %>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
