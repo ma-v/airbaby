@@ -10,6 +10,16 @@
 <% end %>
 <div class="container mt-3">
 	<h1>Search a Baby</h1>
+		<div class="row col-12">
+			<%= form_tag root_path, method: :get do %>
+			<%= range_field_tag :min_age, params[:min_age], min: 0, max: 3, class: "form-control"%>
+			<%= range_field_tag :max_age, params[:max_age], min: 0, max: 3, class: "form-control"%>
+			<%= text_field_tag :min_price, params[:min_price], class: "form-control", placeholder: "Price min"%>
+			<%= text_field_tag :max_price, params[:max_price], class: "form-control", placeholder: "Price max"%>
+			<%= submit_tag "Search", class: "btn button" %>
+			<% end %>
+		</div>
+	
 	<div class="row justify-center">
 		<div class="row col-6">
 			<% @babies.each do |baby| %>
@@ -27,14 +37,14 @@
 			<% end %>
 			<% end %>
 		</div>
-    <div class="row col-6">
-    <div
-      id="map"
-      style="width: 100%;
-      height: 600px;"
-      data-markers="<%= @markers.to_json %>"
-      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
-    </div>
-  </div>
+		<div class="row col-6">
+			<div
+			id="map"
+			style="width: 100%;
+			height: 600px;"
+			data-markers="<%= @markers.to_json %>"
+			data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+		</div>
 	</div>
+</div>
 </div>
