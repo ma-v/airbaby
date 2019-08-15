@@ -12,7 +12,10 @@ class Baby < ApplicationRecord
   validates_numericality_of :price_per_day
   include PgSearch
   pg_search_scope :global_search,
-    against: [ :address],
+    against: [ :description, :title],
+    associated_against: {
+      user: [ :address]
+    },
     using: {
       tsearch: { prefix: true }
     }
