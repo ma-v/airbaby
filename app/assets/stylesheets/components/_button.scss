@@ -1,12 +1,12 @@
 .button {
-	color: $def-dark;
+	color: $main-blue;
     background-color: transparent;
     background-image: none;
-    border-color: $def-dark;
+    border-color: $main-blue;
     border-radius: 5px;
     &:hover {
     	color: white !important;
-    	background-color: $def-dark;
-    	border-color: $def-dark;
+    	background-color: $main-blue;
+    	border-color: $main-blue;
     }
 }
