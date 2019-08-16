@@ -31,7 +31,6 @@
       <div class="row col-5">
         <% current_user.babies.each do |baby| %>
           <div class="collapse ml-2" id="baby<%= baby.id %>">
-
           <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= baby.photo %>)">
             <%= baby.first_name %>'s Reservations
           </div>
@@ -53,7 +52,8 @@
               <p><small>From : <%= booking.start_date.to_date %></small>
                 <i class="fas fa-long-arrow-alt-right"></i>
                 <small>To : <%= booking.end_date.to_date %></small></p>
-                <p>Duration : <strong><%= (((booking.end_date - booking.start_date)/86400) + 1).to_i %> days</strong> | Total price :<%= booking.price %> €</p>
+
+                <p>Duration : <strong><%= (((booking.end_date - booking.start_date)/86400) + 1).to_i %> days</strong> | Total price : <%= booking.price %> €</p>
               </div>
             </div>
               <% end %>
