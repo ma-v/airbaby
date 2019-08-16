@@ -13,10 +13,33 @@
 		<div class="row col-12">
 			<%= form_tag root_path, method: :get do %>
 			<%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Find a Baby"%>
-			<%= range_field_tag :min_age, params[:min_age], min: 0, max: 3, class: "form-control"%>
-			<%= range_field_tag :max_age, params[:max_age], min: 0, max: 3, class: "form-control"%>
+			<%=	label_tag :min_age%>
+			<%= range_field_tag :min_age, params[:min_age], min: 0, max: 3, class: "form-control", value: 0%>
+			<%=	label_tag :max_age%>
+			<%= range_field_tag :max_age, params[:max_age], min: 0, max: 3, class: "form-control", value: 3%>
 			<%= text_field_tag :min_price, params[:min_price], class: "form-control", placeholder: "Price min"%>
 			<%= text_field_tag :max_price, params[:max_price], class: "form-control", placeholder: "Price max"%>
+			<%=	label_tag :clean%>
+			<%= check_box_tag :clean, params[:clean], false %>
+			<%=	label_tag :sleepy%>
+			<%= check_box_tag :sleepy, params[:sleepy], false %>
+			<%=	label_tag :excited%>
+			<%= check_box_tag :excited, params[:excited], false %>
+			<%=	label_tag :crying%>
+			<%= check_box_tag :crying, params[:crying], false %>
+			<%=	label_tag :fat%>
+			<%= check_box_tag :fat, params[:fat], false %>
+			<%=	label_tag :playful%>
+			<%= check_box_tag :playful, params[:playful], false %>
+			<%=	label_tag :funny%>
+			<%= check_box_tag :funny, params[:funny], false %>
+			<%=	label_tag :public%>
+			<%= check_box_tag :public, params[:public], false %>
+			<%=	label_tag :animals%>
+			<%= check_box_tag :animals, params[:animals], false %>
+			<%=	label_tag :speaks%>
+			<%= check_box_tag :speaks, params[:speaks], false %>
+			<br>
 			<%= submit_tag "Search", class: "btn button" %>
 			<% end %>
 		</div>
@@ -47,3 +70,5 @@
 			data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
 		</div>
 	</div>
+
+

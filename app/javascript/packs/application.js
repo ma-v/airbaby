@@ -7,6 +7,3 @@ import { initBookingForm } from '../components/booking_form';
 
 initMapbox();
 initBookingForm();
-
-
-

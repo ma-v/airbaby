@@ -9,7 +9,7 @@ const initBookingForm = () => {
 
   const updateCTA = (priceCents) => {
     const button = document.getElementById('submit');
-    button.value = `Pay ${priceCents / 100} €`;
+    button.value = `Book for ${priceCents / 100} €`;
   };
 
   const updateForm = (event) => {
