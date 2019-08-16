@@ -28,17 +28,10 @@
     <%= f.input :pedophile, as: :boolean %>
     <%= f.input :photo %>
     <%= f.input :photo_cache, as: :hidden %>
+      <%= f.button :submit, "Sign up" %>
+    <% end %>
   </div>
-
-
-      <div class="form-actions">
-        <%= f.button :submit, "Sign up" %>
-      </div>
-      <% end %>
-    <div class="container">
       <%= render "devise/shared/links" %>
     </div>
-    </div>
-
   </div>
 </div>

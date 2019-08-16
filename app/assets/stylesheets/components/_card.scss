@@ -5,21 +5,13 @@
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
   align-items: top;
-  width: 500px;
+  width: 100%;
 }
 
 a {
   text-decoration: none !important;
   color: inherit !important;
 }
-
-// .card-product {
-//   transition:  0.1s;
-// }
-
-// .card-product:hover {
-//   transform: translateX(-2px);
-// }
 
 .card-product img {
   height: 100%;
