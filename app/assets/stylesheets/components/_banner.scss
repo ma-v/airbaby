@@ -33,3 +33,27 @@
   opacity: .7;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
 }
+
+.banner-card {
+  background: #ffffff !important;
+    border-radius: 4px !important;
+    padding: 32px !important;
+    padding-bottom: 24px !important;
+    width: 441px !important;
+    box-shadow: 0 16px 40px rgba(0,0,0,0.25) !important;
+    position: absolute;
+    top: 150px;
+    left: 100px;
+}
+.banner-card h1 {
+  color: #002c4d;
+
+}
+
+.banner-card h2 {
+color: #002c4d;
+}
+
+.banner-card p {
+color: #002c4d;
+}

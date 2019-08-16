@@ -1,9 +1,9 @@
 // Specific CSS for your home-page
 .home-container {
-  padding: 16px;
+  padding: 16px 40px;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 .form-control {
@@ -22,6 +22,11 @@
    box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
 
+#home-main{
+  padding-right: 50px;
+  width: 100%;
+}
+    
 
 @media (max-width: 900px) {
   body {

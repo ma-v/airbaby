@@ -1,9 +1,13 @@
 <% unless user_signed_in? || params[:query].present? %>
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0)), url(https://images.unsplash.com/photo-1492725764893-90b379c2b6e7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80);">
-	<div class="banner-text">
-		<h1>AirBaby</h1>
+
+
+
+  <div class="banner-card">
+		<h1>Discover</h1>
 		<h2> <strong>the first marketplace</strong> to <strong>rent babies</strong>!</h2>
 		<p>Giving baby love to baby lovers</p>
+    <p></p>
 		<%= link_to "Sign-up", new_user_registration_path, class:"btn button"%>
 	</div>
 </div>
@@ -13,62 +17,71 @@
 <div class="home-container">
 	<div id="home-main">
     <div class="search-bar">
-      <div class="row">
-      <%= form_tag root_path, method: :get do %>
-      <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Find a Baby"%>
-      <%= label_tag :min_age%>
-      <%= range_field_tag :min_age, params[:min_age], min: 0, max: 3, class: "form-control", value: 0%>
-      <%= label_tag :max_age%>
-      <%= range_field_tag :max_age, params[:max_age], min: 0, max: 3, class: "form-control", value: 3%>
-      <%= text_field_tag :min_price, params[:min_price], class: "form-control", placeholder: "Price min"%>
-      <%= text_field_tag :max_price, params[:max_price], class: "form-control", placeholder: "Price max"%>
-      <%= label_tag :clean%>
-      <%= check_box_tag :clean, params[:clean], false %>
-      <%= label_tag :sleepy%>
-      <%= check_box_tag :sleepy, params[:sleepy], false %>
-      <%= label_tag :excited%>
-      <%= check_box_tag :excited, params[:excited], false %>
-      <%= label_tag :crying%>
-      <%= check_box_tag :crying, params[:crying], false %>
-      <%= label_tag :fat%>
-      <%= check_box_tag :fat, params[:fat], false %>
-      <%= label_tag :playful%>
-      <%= check_box_tag :playful, params[:playful], false %>
-      <%= label_tag :funny%>
-      <%= check_box_tag :funny, params[:funny], false %>
-      <%= label_tag :public%>
-      <%= check_box_tag :public, params[:public], false %>
-      <%= label_tag :animals%>
-      <%= check_box_tag :animals, params[:animals], false %>
-      <%= label_tag :speaks%>
-      <%= check_box_tag :speaks, params[:speaks], false %>
-        <%= submit_tag "Search", class: "btn button" %>
-        <% end %>
+      <button class="btn btn-primary btn-lg btn-block" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+        Filters Babies
+      </button>
+      <div class="collapse" id="collapseExample">
+        <div class="card card-body">
+          <%= form_tag root_path, method: :get do %>
+            <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Find a Baby"%>
+            <%= label_tag :min_age%>
+            <%= range_field_tag :min_age, params[:min_age], min: 0, max: 3, class: "form-control", value: 0%>
+            <%= label_tag :max_age%>
+            <%= range_field_tag :max_age, params[:max_age], min: 0, max: 3, class: "form-control", value: 3%>
+            <%= text_field_tag :min_price, params[:min_price], class: "form-control", placeholder: "Price min"%>
+            <%= text_field_tag :max_price, params[:max_price], class: "form-control", placeholder: "Price max"%>
+            <%= label_tag :clean%>
+            <%= check_box_tag :clean, params[:clean], false %>
+            <%= label_tag :sleepy%>
+            <%= check_box_tag :sleepy, params[:sleepy], false %>
+            <%= label_tag :excited%>
+            <%= check_box_tag :excited, params[:excited], false %>
+            <%= label_tag :crying%>
+            <%= check_box_tag :crying, params[:crying], false %>
+            <%= label_tag :fat%>
+            <%= check_box_tag :fat, params[:fat], false %>
+            <%= label_tag :playful%>
+            <%= check_box_tag :playful, params[:playful], false %>
+            <%= label_tag :funny%>
+            <%= check_box_tag :funny, params[:funny], false %>
+            <%= label_tag :public%>
+            <%= check_box_tag :public, params[:public], false %>
+            <%= label_tag :animals%>
+            <%= check_box_tag :animals, params[:animals], false %>
+            <%= label_tag :speaks%>
+            <%= check_box_tag :speaks, params[:speaks], false %>
+            <%= submit_tag "Search", class: "btn button" %>
+          <% end %>
         </div>
-    </div>
-  			<% @babies.each do |baby| %>
-  			<%= link_to(baby_path(baby)) do %>
-  			<div class="card-product mt-2" data-center="<%= [baby.user.longitude, baby.user.latitude] %>">
-  				<%= cl_image_tag baby.photo, height: 180, width: 180, crop: :fill %>
-  				<div class="card-product-infos">
-  					<h2><%= baby.first_name %></h2>
-  					<h3><%= baby.title %></h3>
-  					<p><%= baby.description %></p>
-  					<h6>Price per day: <%= baby.price_per_day %>€</h6>
-  					<p>Gender: <%= baby.gender %></p>
-  				</div>
-  			</div>
-  			 <% end %>
-  			<% end %>
-		</div>
-      <div>
-          <div
-            id="map"
-            style="width: 40vw;
-            height: 600px;"
-            data-markers="<%= @markers.to_json %>"
-            data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
-          </div>
       </div>
+    </div>
+    <div class="baby-cards">
+      <% @babies.each do |baby| %>
+        <%= link_to(baby_path(baby)) do %>
+          <div class="card-product mt-4" data-center="<%= [baby.user.longitude, baby.user.latitude] %>">
+            <%= cl_image_tag baby.photo, height: 180, width: 180, crop: :fill %>
+            <div class="card-product-infos">
+              <h3><%= baby.first_name %> | Gender: <%= baby.gender %></h3>
+              <h2><%= baby.title %></h2>
+              <p><%= baby.description %></p>
+              <h3><%= baby.price_per_day %> € / per day</h3>
+              <div class="d-flex">
+              <%= button_to "See this baby", baby_path(baby), :class => "btn button mr-2", :method => :get %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
+    <div
+      id="map"
+      class="col-sm-12 col-md-5"
+      style="width: 40vw;
+      height: 600px;"
+      data-markers="<%= @markers.to_json %>"
+      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
   </div>
 

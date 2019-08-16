@@ -39,6 +39,12 @@
   }
 }
 
+.dashboard-container .card-product {
+  &:hover {
+    border: none;
+  }
+}
+
 $base-margin: 20px;
 $blue: #345F90;
 $tab-height: 35px;

@@ -1,11 +1,14 @@
 .card-product {
   overflow: hidden;
-  height: 180px;
+  height: 200px;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
   align-items: top;
   width: 100%;
+  &:hover {
+    border: 3px solid $def-light-blue;
+  }
 }
 
 a {
