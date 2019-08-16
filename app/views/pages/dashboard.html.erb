@@ -1,8 +1,8 @@
 <div class="container">
   <h1>My Babies</h1>
   <div class="row justify-center">
-    <div class="row col-6">
-      <ul>
+    <div class="row col-7">
+      <ul class="dashboard-container">
         <% current_user.babies.each do |baby| %>
         <div class="card-product mt-4">
           <%= cl_image_tag baby.photo, height: 180, width: 180, crop: :fill %>
@@ -11,23 +11,26 @@
             <h2><%= baby.title %></h2>
             <p><%= baby.description %></p>
             <h3><%= baby.price_per_day %> € / per day</h3>
-            <p> <%= link_to "See my baby", baby_path(baby) %>
-              <%= link_to "Edit my baby", edit_baby_path(baby) %>
-              <%= link_to "Delete my baby", baby_path(baby),
+            <div class="d-flex">
+              <%= button_to "See my baby", baby_path(baby), :class => "btn button mr-2", :method => :get %>
+              <%= button_to "Edit my baby", edit_baby_path(baby), :class => "btn button mr-2", :method => :get %>
+              <%= button_to "Delete my baby", baby_path(baby),
+              :class => "btn button mr-2",
               method: :delete,
-              data: { confirm: "Are you sure?" } %></p>
+              data: { confirm: "Are you sure?" } %>
+              </div>
             </div>
-          </div>
           <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#baby<%= baby.id %>" aria-expanded="false" aria-controls="collapseExample">
             Voir ses bookings
+            <br><i class="far fa-arrow-alt-circle-right"></i>
           </button>
+          </div>
           <% end %>
         </ul>
       </div>
-      <div class="row col-6">
+      <div class="row col-5">
         <% current_user.babies.each do |baby| %>
-          <div class="collapse" id="baby<%= baby.id %>">
-
+          <div class="collapse ml-2" id="baby<%= baby.id %>">
           <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= baby.photo %>)">
             <%= baby.first_name %>'s Reservations
           </div>
@@ -49,6 +52,7 @@
               <p><small>From : <%= booking.start_date.to_date %></small>
                 <i class="fas fa-long-arrow-alt-right"></i>
                 <small>To : <%= booking.end_date.to_date %></small></p>
+
                 <p>Duration : <strong><%= (((booking.end_date - booking.start_date)/86400) + 1).to_i %> days</strong> | Total price : <%= booking.price %> €</p>
               </div>
             </div>

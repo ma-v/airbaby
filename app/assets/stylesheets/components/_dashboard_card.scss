@@ -1,0 +1,121 @@
+.card-category {
+  background-size: cover;
+  background-position: center;
+  height: 180px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  border-radius: 5px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.dashboard-container {
+  padding-left: 0;
+}
+
+.dashboard-container .card-product {
+  overflow: hidden;
+  height: 200px;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: top;
+  width: 600px;
+}
+
+.dashboard-container .button {
+  font-size: 12px;
+  padding: 4px 6px;
+}
+
+.dashboard-container .btn-primary {
+  &:hover{
+    background-color: #e5272a;
+    ;
+  }
+}
+
+$base-margin: 20px;
+$blue: #345F90;
+$tab-height: 35px;
+$tab-border-radius: 35px;
+
+body{
+  background: rgba($blue, 0.07);
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 1.66667;
+}
+.container{
+  width: 75%;
+  margin: 3rem auto;
+}
+// h2{
+//   color: $blue;
+//   font-size: 24px;
+//   line-height: 1.25;
+//   font-family: "Roboto Slab", serif;
+//   margin-top: $base-margin;
+//   margin-bottom: $base-margin;
+// }
+
+
+.tab-slider--nav{
+  width: 100%;
+  float: left;
+  margin-bottom: $base-margin;
+}
+.tab-slider--tabs{
+  display: block;
+  float: left;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  position: relative;
+  border-radius: $tab-border-radius;
+  overflow: hidden;
+  background: #fff;
+  height: $tab-height;
+  user-select: none;
+  &:after{
+    content: "";
+    width: 50%;
+    background: $blue;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: all 250ms ease-in-out;
+    border-radius: $tab-border-radius;
+  }
+  &.slide:after{
+    left: 50%;
+  }
+}
+
+.tab-slider--trigger {
+  font-size: 12px;
+  line-height: 1;
+  font-weight: bold;
+  color: $blue;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 11px $base-margin;
+  position: relative;
+  z-index: 2;
+  cursor: pointer;
+  display: inline-block;
+  transition: color 250ms ease-in-out;
+  user-select: none;
+  &.active {
+    color: #fff;
+  }
+}
+.tab-slider--body{
+  margin-bottom: $base-margin;
+}

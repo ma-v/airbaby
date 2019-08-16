@@ -5,7 +5,7 @@
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
   align-items: top;
-  width: 450px;
+  width: 500px;
 }
 
 a {
@@ -23,13 +23,12 @@ a {
 
 .card-product img {
   height: 100%;
-  width: 180px;
+  width: 140px;
   object-fit: cover;
 }
 
 .card-product h2 {
-  font-size: 30px;
-  font-weight: bold;
+  font-size: 18px;
   margin: 0;
 }
 
@@ -41,6 +40,14 @@ a {
   margin-top: 8px;
 }
 
+.card-product .btn-primary {
+  padding: 16px;
+}
+
 .card-product .card-product-infos {
   padding: 16px;
+}
+
+.card-product .card-product-infos h3 {
+  font-size: 20px;
 }
