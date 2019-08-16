@@ -25,6 +25,7 @@ a {
   height: 100%;
   width: 140px;
   object-fit: cover;
+  position: relative;
 }
 
 .card-product h2 {
@@ -50,4 +51,13 @@ a {
 
 .card-product .card-product-infos h3 {
   font-size: 20px;
+}
+
+.owner_avatar {
+  width: 35px !important;
+  height: 35px !important;
+  border-radius: 50% !important;
+  position: absolute;
+  top: 10px;
+  left: 320px;
 }

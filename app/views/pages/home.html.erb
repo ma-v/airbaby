@@ -20,30 +20,31 @@
         %>
         <%= submit_tag "Search", class: "btn button" %>
         <% end %>
-    </div>
-  			<% @babies.each do |baby| %>
-  			<%= link_to(baby_path(baby)) do %>
-  			<div class="card-product mt-2" data-center="<%= [baby.user.longitude, baby.user.latitude] %>">
-  				<%= cl_image_tag baby.photo, height: 180, width: 180, crop: :fill %>
-  				<div class="card-product-infos">
-  					<h2><%= baby.first_name %></h2>
-  					<h3><%= baby.title %></h3>
-  					<p><%= baby.description %></p>
-  					<h6>Price per day: <%= baby.price_per_day %>€</h6>
-  					<p>Gender: <%= baby.gender %></p>
-  				</div>
-  			</div>
-  			 <% end %>
-  			<% end %>
-		</div>
-      <div>
-          <div
-            id="map"
-            style="width: 40vw;
-            height: 600px;"
-            data-markers="<%= @markers.to_json %>"
-            data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
-          </div>
       </div>
+      <% @babies.each do |baby| %>
+      <%= link_to(baby_path(baby)) do %>
+      <div class="card-product mt-2" data-center="<%= [baby.user.longitude, baby.user.latitude] %>">
+        <%= cl_image_tag baby.photo, height: 180, width: 180, crop: :fill %>
+          <img src='<%= User.find(baby.user_id).photo %>' class="owner_avatar" />
+        <div class="card-product-infos">
+         <h2><%= baby.first_name %></h2>
+         <h3><%= baby.title %></h3>
+         <p><%= baby.description %></p>
+         <h6>Price per day: <%= baby.price_per_day %>€</h6>
+         <p>Gender: <%= baby.gender %></p>
+       </div>
+     </div>
+     <% end %>
+     <% end %>
+   </div>
+   <div>
+    <div
+    id="map"
+    style="width: 40vw;
+    height: 600px;"
+    data-markers="<%= @markers.to_json %>"
+    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
+</div>
+</div>
 

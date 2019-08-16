@@ -9,6 +9,7 @@
 		<p><%= @baby.description %></p>
 	</div>
 	<div class="baby-price">
+    <img src='<%= User.find(baby.user_id).photo %>' class="owner_avatar" />
 		<h2><%= @baby.price_per_day %> €</h2>
 	</div>
 	<div class="baby-traits">
