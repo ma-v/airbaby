@@ -10,16 +10,17 @@
 <% end %>
 
 <div class="home-container">
-  		<div>
-  	<h1>Search a Baby</h1>
-  	<%= form_tag root_path, method: :get do %>
-    <%= text_field_tag :query,
-    params[:query],
-    class: "form-control",
-      placeholder: "Find a Baby"
-      %>
-      <%= submit_tag "Search", class: "btn button" %>
-      <% end %>
+	<div id="home-main">
+    <div class="search-bar">
+    	<%= form_tag root_path, method: :get do %>
+      <%= text_field_tag :query,
+      params[:query],
+      class: "form-control",
+        placeholder: "Find a Baby"
+        %>
+        <%= submit_tag "Search", class: "btn button" %>
+        <% end %>
+    </div>
   			<% @babies.each do |baby| %>
   			<%= link_to(baby_path(baby)) do %>
   			<div class="card-product mt-2" data-center="<%= [baby.user.longitude, baby.user.latitude] %>">
@@ -34,7 +35,7 @@
   			</div>
   			 <% end %>
   			<% end %>
-  		</div>
+		</div>
       <div>
           <div
             id="map"
