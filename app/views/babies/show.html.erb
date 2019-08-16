@@ -1,77 +1,95 @@
 <div class="container">
-
-	<div class="baby-img">
-		<%= cl_image_tag @baby.photo, height: 250, width: 250, crop: :fill %>
-	</div>
-	<div class="baby-info">
-		<h1><%= @baby.first_name %> - <%= @baby.title %></h1>
-		<h2><%= @baby.age %> years old</h2>
-		<p><%= @baby.description %></p>
-	</div>
-	<div class="baby-price">
-    <img src='<%= User.find(baby.user_id).photo %>' class="owner_avatar" />
-		<h2><%= @baby.price_per_day %> €</h2>
-	</div>
-	<div class="baby-traits">
-		<h2>My baby skills</h2>
-		<ul>
-      <% if @baby.clean %>
-      <li>Clean</li>
-      <% end %>
-      <% if @baby.sleepy %>
-      <li>Sleepy</li>
-      <% end %>
-      <% if @baby.excited %>
-      <li>Excited</li>
-      <% end %>
-      <% if @baby.crying %>
-      <li>Cries a lot</li>
-      <% end %>
-      <% if @baby.fat %>
-      <li>Fat</li>
-      <% end %>
-      <% if @baby.playful %>
-      <li>Playful</li>
-      <% end %>
-      <% if @baby.funny %>
-      <li>Funny</li>
-      <% end %>
-      <% if @baby.public %>
-      <li>At ease in public</li>
-      <% end %>
-      <% if @baby.animals %>
-      <li>At ease with animals</li>
-      <% end %>
-      <% if @baby.speaks %>
-      <li>Speaks</li>
-      <% end %>
-    </ul>
-    <p><% if policy(@baby).edit? %>
-      <%= link_to "Edit my baby", edit_baby_path(@baby) %>
-      <% end %>
-    </p>
-    <p><% if policy(@baby).destroy? %>
-      <%= link_to "Delete my baby", baby_path(@baby),
-    method: :delete,
-    data: { confirm: "Are you sure?" } %>
-      <% end %>
-    </p>
-  </div>
-</div>
-
-	<div class="form-container fixed-bottom">
-          <div class="header">
-            <div class="header-row">
-              <div class="big-bold" id="price" data-amount-cents="<%= @baby.price_per_day * 100 %>"><%= @baby.price_per_day %>€</div>
-              <div class="small-light"> / Day</div>
+  <div class="row">
+    <div class="col-xs-12 col-xl-8">
+	     <div class="row card-show-head">
+           <div class="baby-img">
+    		      <%= cl_image_tag @baby.photo, height: 250, width: 250, crop: :fill %>
+    	     </div>
+    	     <div class="col-6">
+             <div class="baby-info p-2">
+            		<h1><%= @baby.first_name %> - <%= @baby.title %></h1>
+            		<h2><%= @baby.age %> years old</h2>
+      	     </div>
+             <div class="baby-price">
+              <h2><%= @baby.price_per_day %> €</h2>
+             </div>
+           </div>
+          </div>
+         <div class="row card-show-details">
+           <div class ="col">
+             <div class="baby-traits p-3">
+              <h2>My baby skills</h2>
+              <ul>
+                <% if @baby.clean %>
+                  <li>Clean</li>
+                <% end %>
+                <% if @baby.sleepy %>
+                  <li>Sleepy</li>
+                <% end %>
+                <% if @baby.excited %>
+                  <li>Excited</li>
+                <% end %>
+                <% if @baby.crying %>
+                  <li>Cries a lot</li>
+                <% end %>
+                <% if @baby.fat %>
+                  <li>Fat</li>
+                <% end %>
+                <% if @baby.playful %>
+                  <li>Playful</li>
+                <% end %>
+                <% if @baby.funny %>
+                  <li>Funny</li>
+                <% end %>
+                <% if @baby.public %>
+                  <li>At ease in public</li>
+                <% end %>
+                <% if @baby.animals %>
+                  <li>At ease with animals</li>
+                <% end %>
+                <% if @baby.speaks %>
+                  <li>Speaks</li>
+                <% end %>
+              </ul>
+              <p>
+                <% if policy(@baby).edit? %>
+                <%= link_to "Edit my baby", edit_baby_path(@baby) %>
+                <% end %>
+              </p>
+              <p>
+                <% if policy(@baby).destroy? %>
+                <%= link_to "Delete my baby", baby_path(@baby),
+                method: :delete,
+                data: { confirm: "Are you sure?" } %>
+                <% end %>
+              </p>
             </div>
           </div>
+          <div class="col align-items-center">
+             <div class="baby-description p-3">
+                "<%= @baby.description %>"
+             </div>
+           </div>
+         </div>
+  	     
+      </div>
 
-          <%= simple_form_for([@baby, @booking]) do |f| %>
-          	<%= f.input :start_date, as: :date, html5: true %>
-          	<%= f.input :end_date, as: :date, disabled: true, html5: true %>
-            <%= f.input :price, disabled: true, :as => :hidden, input_html: {value: @baby.price_per_day} %>
-          	<%= f.submit "Book for #{@baby.price_per_day}€", id: "submit", class: "btn button" %>
-          <% end %>
+    <div class="col-xs-12 col-xl-4">
+      <div class="form-container">
+        <div class="header">
+          <div class="header-row">
+            <div class="big-bold" id="price" data-amount-cents="<%= @baby.price_per_day * 100 %>"><%= @baby.price_per_day %>€</div>
+            <div class="small-light"> / Day</div>
+          </div>
         </div>
-	</div>
+
+  <%= simple_form_for([@baby, @booking]) do |f| %>
+  <%= f.input :start_date, as: :date, html5: true %>
+  <%= f.input :end_date, as: :date, disabled: true, html5: true %>
+  <%= f.input :price, disabled: true, :as => :hidden, input_html: {value: @baby.price_per_day} %>
+  <%= f.submit "Book for #{@baby.price_per_day}€", id: "submit", class: "btn button" %>
+  <% end %>
+  </div>
+</div>
+</div>
+</div>

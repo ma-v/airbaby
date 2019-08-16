@@ -9,42 +9,68 @@
 </div>
 <% end %>
 
+
 <div class="home-container">
 	<div id="home-main">
     <div class="search-bar">
-    	<%= form_tag root_path, method: :get do %>
-      <%= text_field_tag :query,
-      params[:query],
-      class: "form-control",
-        placeholder: "Find a Baby"
-        %>
-        <%= submit_tag "Search", class: "btn button" %>
+      <div class="row">
+        <%= form_tag root_path, method: :get do %>
+        <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Find a Baby"%>
+        <%= label_tag :min_age%>
+        <%= range_field_tag :min_age, params[:min_age], min: 0, max: 3, class: "form-control", value: 0%>
+        <%= label_tag :max_age%>
+        <%= range_field_tag :max_age, params[:max_age], min: 0, max: 3, class: "form-control", value: 3%>
+        <%= text_field_tag :min_price, params[:min_price], class: "form-control", placeholder: "Price min"%>
+        <%= text_field_tag :max_price, params[:max_price], class: "form-control", placeholder: "Price max"%>
+        <%= label_tag :clean%>
+        <%= check_box_tag :clean, params[:clean], false %>
+        <%= label_tag :sleepy%>
+        <%= check_box_tag :sleepy, params[:sleepy], false %>
+        <%= label_tag :excited%>
+        <%= check_box_tag :excited, params[:excited], false %>
+        <%= label_tag :crying%>
+        <%= check_box_tag :crying, params[:crying], false %>
+        <%= label_tag :fat%>
+        <%= check_box_tag :fat, params[:fat], false %>
+        <%= label_tag :playful%>
+        <%= check_box_tag :playful, params[:playful], false %>
+        <%= label_tag :funny%>
+        <%= check_box_tag :funny, params[:funny], false %>
+        <%= label_tag :public%>
+        <%= check_box_tag :public, params[:public], false %>
+        <%= label_tag :animals%>
+        <%= check_box_tag :animals, params[:animals], false %>
+        <%= label_tag :speaks%>
+        <%= check_box_tag :speaks, params[:speaks], false %>
+          <%= submit_tag "Search", class: "btn button" %>
         <% end %>
       </div>
-      <% @babies.each do |baby| %>
-      <%= link_to(baby_path(baby)) do %>
-      <div class="card-product mt-2" data-center="<%= [baby.user.longitude, baby.user.latitude] %>">
-        <%= cl_image_tag baby.photo, height: 180, width: 180, crop: :fill %>
+    </div>
+  			<% @babies.each do |baby| %>
+  			<%= link_to(baby_path(baby)) do %>
+  			<div class="card-product mt-2" data-center="<%= [baby.user.longitude, baby.user.latitude] %>">
+  				<%= cl_image_tag baby.photo, height: 180, width: 180, crop: :fill %>
           <img src='<%= User.find(baby.user_id).photo %>' class="owner_avatar" />
-        <div class="card-product-infos">
-         <h2><%= baby.first_name %></h2>
-         <h3><%= baby.title %></h3>
-         <p><%= baby.description %></p>
-         <h6>Price per day: <%= baby.price_per_day %>€</h6>
-         <p>Gender: <%= baby.gender %></p>
-       </div>
-     </div>
-     <% end %>
-     <% end %>
-   </div>
-   <div>
-    <div
-    id="map"
-    style="width: 40vw;
-    height: 600px;"
-    data-markers="<%= @markers.to_json %>"
-    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+  				<div class="card-product-infos">
+  					<h2><%= baby.first_name %></h2>
+  					<h3><%= baby.title %></h3>
+  					<p><%= baby.description %></p>
+  					<h6>Price per day: <%= baby.price_per_day %>€</h6>
+  					<p>Gender: <%= baby.gender %></p>
+  				</div>
+  			</div>
+  			 <% end %>
+  			<% end %>
+		</div>
+      <div>
+          <div
+            id="map"
+            style="width: 40vw;
+            height: 600px;"
+            data-markers="<%= @markers.to_json %>"
+            data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+          </div>
   </div>
 </div>
-</div>
+
 
