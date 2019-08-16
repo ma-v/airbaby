@@ -15,10 +15,18 @@
 }
 
 #map {
+  position: sticky;
+  top: 5%;
   width: 100%;
   height: auto;
+   box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
 
+#home-main{
+  padding-right: 50px;
+  width: 100%;
+}
+    
 
 @media (max-width: 900px) {
   body {

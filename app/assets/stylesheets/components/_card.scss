@@ -5,7 +5,7 @@
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
   align-items: top;
-  width: 600px;
+  width: 100%;
   &:hover {
     border: 3px solid $def-light-blue;
   }
@@ -15,14 +15,6 @@ a {
   text-decoration: none !important;
   color: inherit !important;
 }
-
-// .card-product {
-//   transition:  0.1s;
-// }
-
-// .card-product:hover {
-//   transform: translateX(-2px);
-// }
 
 .card-product img {
   height: 100%;
@@ -54,3 +46,26 @@ a {
 .card-product .card-product-infos h3 {
   font-size: 20px;
 }
+
+.card-show-head {
+  box-shadow: 0 0 10px #D3D3D3;
+  background-color: white;
+  .baby-price{
+    color: $main-teal;
+  }
+}
+
+.card-show-details {
+  box-shadow: 0 0 10px #D3D3D3;
+  background-color: white;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  .baby-description {
+    color: $main-red;
+    font-style: italic;
+    font-size: 25px;
+    align-items: center;
+  }
+}
+
