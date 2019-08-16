@@ -51,3 +51,26 @@ a {
 .card-product .card-product-infos h3 {
   font-size: 20px;
 }
+
+.card-show-head {
+  box-shadow: 0 0 10px #D3D3D3;
+  background-color: white;
+  .baby-price{
+    color: $main-teal;
+  }
+}
+
+.card-show-details {
+  box-shadow: 0 0 10px #D3D3D3;
+  background-color: white;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  .baby-description {
+    color: $main-red;
+    font-style: italic;
+    font-size: 25px;
+    align-items: center;
+  }
+}
+
