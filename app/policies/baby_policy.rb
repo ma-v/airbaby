@@ -1,7 +1,7 @@
 class BabyPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      scope.where.not(user: user).geocoded
+      scope.where.not(user: user)
     end
   end
 
